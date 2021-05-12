@@ -1,0 +1,36 @@
+<div *ngFor="let pais of paises; let i=index;" class="card-flag	">
+	<div class="general">
+		<h3 class="h4">{{pais.name}}</h3>
+		<div class="stats">
+			<div>
+				<div class="title">Población</div>
+				<i class="fa fa-user"></i>
+				<div class="value">
+					{{pais.population | number}}
+				</div>
+			</div>
+			<div>
+				<div class="title">Region</div>
+				<i class="fa fa-globe-{{pais.region|lowercase}}"></i>
+				<div class="value">{{pais.region}}</div>
+			</div>
+		</div>
+	</div>
+	<div class="additional">
+		<img
+			class="img-thumbnail img-card-flag"
+			[src]="pais.flag"
+			alt="{{pais.name}}"
+		/>
+
+		<div class="more-info">
+			<div class="stats">
+				<div class="title">
+					Ver mas info<a [routerLink]="[ '/pais', pais.alpha2Code ]"
+						><i class="fa fa-link"></i
+					></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

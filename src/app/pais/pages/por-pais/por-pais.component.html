@@ -1,0 +1,41 @@
+<h2>Por País</h2>
+<hr />
+<div class="row">
+	<div class="col-12">
+		<app-pais-input
+			(onEnter)="buscar($event)"
+			(onDeBounce)="suggestions($event)"
+			placeHolder="Buscar País..."
+		></app-pais-input>
+	</div>
+</div>
+<ul *ngIf="activarSugerencias" class="list-group">
+	<li
+		*ngFor="let paisSugerido of paisesSugeridos"
+		class="list-group-item list-group-item-action"
+	>
+		<a class="nav-link" [routerLink]="['/pais', paisSugerido.alpha2Code]"
+			>{{paisSugerido.name}}</a
+		>
+	</li>
+	<li class="list-group-item list-group-item-action">
+		<a class="nav-link" (click)="buscar(termino)">Buscar: "{{termino}}"</a>
+	</li>
+</ul>
+
+<div *ngIf="isLoading" class="row mt-3">
+	<div class="col-12 d-flex justify-content-center">
+		<div class="circleLoader circle-5"></div>
+	</div>
+</div>
+
+<div *ngIf="!isLoading " class="row text-center mt-3">
+	<div class="col-12" *ngIf=" !isErrorAlert else errorAlert">
+		<app-pais-tabla [paises]="paises" [termino]="termino"></app-pais-tabla>
+	</div>
+</div>
+<ng-template #errorAlert>
+	<div class="alert alert-danger" role="alert">
+		A simple danger alert—check it out!
+	</div>
+</ng-template>

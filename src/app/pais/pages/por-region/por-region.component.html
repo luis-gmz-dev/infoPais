@@ -1,0 +1,36 @@
+<h3>Buscar por Region <small>{{regionActived | titlecase}}</small></h3>
+<hr />
+
+<h5>Seleccione una region</h5>
+
+<div class="btn" role="group" aria-label="Regiones">
+	<button
+		*ngFor="let region of regiones"
+		(click)="activarRegion(region)"
+		class="btn btn-outline-secondary me-3"
+		[class.active]="region===regionActived"
+		href="#"
+		role="button"
+	>
+		{{region}}
+	</button>
+</div>
+
+<div *ngIf="isLoading" class="row mt-3">
+	<div class="col-12 d-flex justify-content-center">
+		<div class="circleLoader circle-5"></div>
+	</div>
+</div>
+<div *ngIf="!isErrorAlert else errorAlert" class="row text-center mt-3">
+	<div class="col-12">
+		<app-pais-tabla
+			[paises]="paises"
+			[termino]="regionActived"
+		></app-pais-tabla>
+	</div>
+</div>
+<ng-template #errorAlert>
+	<div class="alert alert-danger" role="alert">
+		No se han encontrado paises en la region de {{regionActived}}
+	</div>
+</ng-template>
