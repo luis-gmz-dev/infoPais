@@ -24,6 +24,19 @@ export interface Country {
 	regionalBlocs: RegionalBloc[];
 	cioc: null | string;
 }
+export interface CountrySuperSmall {
+	name: string;
+	alpha3Code: string;
+	borders?: string[];
+}
+export interface CountrySmall {
+	name: string;
+	capital: string;
+	alpha3Code: string;
+	flag: string;
+	population:number;
+	borders?: string[];
+}
 
 export interface Currency {
 	code: null | string;

@@ -1,68 +1,96 @@
-<div *ngIf="!pais else divPais" class="row d-flex justify-content-center">
-	<div class="circleLoader circle-5"></div>
+<div
+  *ngIf="!pais; else divPais2"
+  class="row d-flex justify-content-center aling-items-center"
+>
+  <div class="circleLoader circle-5"></div>
 </div>
-<ng-template #divPais>
-	<div class="row">
-		<div class="col-12 text-center">
-			<h1>País: <small>{{pais.name}}</small></h1>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-12 d-flex justify-content-center">
-			<div class="card-flag card-flag-lg">
-				<div class="additional">
-					<div class="user-card">
-						<img
-							class="img-thumbnail img-card-flag"
-							[src]="pais.flag"
-							alt="{{pais.name}}"
-						/>
-					</div>
-					<div class="more-info">
-						<h3>{{pais.name}}</h3>
-						<div class="coords">
-							<span>Nombre Nativo: {{pais.nativeName}}</span>
-							<span>Nombre: {{pais.name}}</span>
-						</div>
-						<div class="coords">
-							<span>Capital: {{pais.capital}} </span>
-							<span>Codigo alpha: {{pais.alpha2Code}} </span>
-						</div>
-						<div class="stats">
-							<div>
-								<div class="title">Población</div>
-								<i class="fa fa-user"></i>
-								<div class="value">
-									{{pais.population | number}}
-								</div>
-							</div>
-							<div>
-								<div class="title">Region</div>
-								<i
-									class="fa fa-globe-{{pais.region|lowercase}}"
-								></i>
-								<div class="value">{{pais.region}}</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="general">
-					<h3>Otros nombres</h3>
+<ng-template #divPais2>
+  <div class="row">
+    <div class="col-12 text-center mt-3">
+      <h1>
+        País: <small>{{ pais.name }}</small>
+      </h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center">
+      <!-- <div class="card-flag card-flag-lg">
+        <div class="additional">
+          <div class="user-card">
+            <img
+              class="img-thumbnail img-card-flag"
+              [src]="pais.flag"
+              alt="{{ pais.name }}"
+            />
+          </div>
+          <div class="more-info">
+            <h3>{{ pais.name }}</h3>
+            <div class="coords">
+              <span>Nombre Nativo: {{ pais.nativeName }}</span>
+              <span>Nombre: {{ pais.name }}</span>
+            </div>
+            <div class="coords">
+              <span>Capital: {{ pais.capital }} </span>
+              <span>Codigo alpha: {{ pais.alpha3Code }} </span>
+            </div>
+            <div class="stats">
+              <div>
+                <div class="title">Población</div>
+                <i class="fa fa-user"></i>
+                <div class="value">
+                  {{ pais.population | number }}
+                </div>
+              </div>
+              <div>
+                <div class="title">Region</div>
+                <i class="fa fa-globe-{{ pais.region | lowercase }}"></i>
+                <div class="value">{{ pais.region }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
 
-					<div
-						*ngFor="let translate of pais.translations | keyvalue"
-						class="btn-group btn-group-sm m-2"
-						role="group"
-					>
-						<span type="button" class="btn btn-secondary"
-							>{{translate.value}}</span
-						>
-						<span type="button" class="btn btn-warning"
-							>{{translate.key}}</span
-						>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+      <div class="card mb-3 bg-light">
+        <div class="row g-2">
+          <div class="card-header col-md-5 d-flex">
+            <img [src]="pais.flag" class="img-fluid rounded-start" alt="..." />
+          </div>
+          <div class="col-md-7">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ pais.name }}
+                <small class="text-muted">{{ pais.capital }}</small>
+              </h5>
+              <p class="card-text">
+                Region: <i class="fa fa-{{ pais.region }}"></i>
+                {{ pais.population | number }}
+              </p>
+              <p class="card-text"></p>
+              <p class="card-text">
+                Población: <i class="fa fa-user"></i>
+                {{ pais.population | number }}
+              </p>
+              <div class="general">
+                <h5 class="card-title">Otros nombres</h5>
+
+                <div
+                  *ngFor="let translate of pais.translations | keyvalue"
+                  class="btn-group btn-group-sm m-2"
+                  role="group"
+                >
+                  <span type="button" class="btn btn-secondary">{{
+                    translate.value
+                  }}</span>
+                  <span type="button" class="btn btn-warning">{{
+                    translate.key
+                  }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </ng-template>

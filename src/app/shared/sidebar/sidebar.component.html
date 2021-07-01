@@ -1,47 +1,60 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	<div class="container">
-		<a class="navbar-brand" href="#">
-			<i class="fa fa-globe" aria-hidden="true"></i> InfoPais</a
-		>
-		<button
-			class="navbar-toggler"
-			type="button"
-			data-bs-toggle="collapse"
-			data-bs-target="#navbarNav"
-			aria-controls="navbarNav"
-			aria-expanded="false"
-			aria-label="Toggle navigation"
-		>
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div
-			class="collapse navbar-collapse justify-content-center"
-			id="navbarNav"
-		>
-			<ul class="navbar-nav text-center">
-				<li
-					routerLink=""
-					routerLinkActive="active"
-					[routerLinkActiveOptions]="{exact:true}"
-					class="nav-link me-3"
-				>
-					Por País
-				</li>
-				<li
-					routerLink="region"
-					routerLinkActive="active"
-					class="nav-link me-3"
-				>
-					Por Región
-				</li>
-				<li
-					routerLink="capital"
-					routerLinkActive="active"
-					class="nav-link me-3"
-				>
-					Por Capital
-				</li>
-			</ul>
-		</div>
-	</div>
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <i class="fa fa-globe" aria-hidden="true"></i> InfoPais</a
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav text-center">
+        <li
+          routerLink="paises/pais"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="nav-link me-3"
+        >
+          Por País
+        </li>
+        <li
+          routerLink="paises/region"
+          routerLinkActive="active"
+          class="nav-link me-3"
+        >
+          Por Región
+        </li>
+        <li
+          routerLink="paises/capital"
+          routerLinkActive="active"
+          class="nav-link me-3"
+        >
+          Por Capital
+        </li>
+        <!-- <li
+          routerLink="paises/anidada"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="nav-link me-3"
+        >
+          Busqueda anidada
+        </li> -->
+        <li
+          routerLink="paises/fronteras"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="nav-link me-3"
+        >
+          Fronteras de país
+        </li>
+      </ul>
+    </div>
+  </div>
 </nav>

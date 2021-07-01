@@ -8,7 +8,7 @@ import { PaisModule } from './pais/pais.module';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
-	declarations: [AppComponent],
+	declarations: [AppComponent,],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,

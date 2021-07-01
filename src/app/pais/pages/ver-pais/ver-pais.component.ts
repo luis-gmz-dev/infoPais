@@ -6,34 +6,27 @@ import { PaisService } from '../../services/pais.service';
 import { Country } from '../../interfaces/pais.interface';
 
 @Component({
-	selector: 'app-ver-pais',
-	templateUrl: './ver-pais.component.html',
+  selector: 'app-ver-pais',
+  templateUrl: './ver-pais.component.html',
 })
 export class VerPaisComponent implements OnInit {
-	pais: Country;
+  pais: Country;
 
-	constructor(
-		private _activatedRoute: ActivatedRoute,
-		private _paisService: PaisService
-	) {}
+  constructor(
+    private _activatedRoute: ActivatedRoute,
+    private _paisService: PaisService
+  ) {}
 
-	ngOnInit(): void {
-		this._activatedRoute.params
-			.pipe(
-				switchMap(({ codigoPais }) => {
-					return this._paisService.getPaisCode(codigoPais);
-				}),
-				tap((resp) => console.log(resp))
-			)
-			.subscribe((pais: Country) => {
-				this.pais = pais;
-			});
-		// //SIN SWITCMAP
-		// this._activatedRoute.params.subscribe(({ codigoPais }) => {
-		// 	console.log(codigoPais);
-		// 	this._paisService.getPaisCode(codigoPais).subscribe((pais) => {
-		// 		console.log(pais);
-		// 	});
-		// });
-	}
+  ngOnInit(): void {
+    this._activatedRoute.params
+      .pipe(
+        switchMap(({ codigoPais }) => {
+          return this._paisService.buscarPaisCode3Alpha(codigoPais);
+        }),
+        tap((resp) => resp)
+      )
+      .subscribe((pais: Country) => {
+        this.pais = pais;
+      });
+  }
 }

@@ -1,0 +1,85 @@
+<h1 class="mt-5">Busqueda anidada</h1>
+<hr />
+<form [formGroup]="formAnidada" (ngSubmit)="guardar()">
+	<!-- Selector de Region -->
+	<div class="row">
+		<div class="col">
+			<label class="form-label">Continente</label>
+			<select class="form-control" formControlName="region">
+				<option value=""> -- Seleccione continente -- </option>
+				<option
+					*ngFor="let region of regiones"
+					[value]="region|lowercase"
+				>
+					{{region}}
+				</option>
+			</select>
+		</div>
+	</div>
+	<!-- Selector de Paises -->
+	<div class="row" *ngIf="paises.length!==0">
+		<div class="col">
+			<label class="form-label">Pais</label>
+			<select class="form-control" formControlName="pais">
+				<option value=""> -- Seleccione pais -- </option>
+				<option
+					*ngFor="let pais of paises"
+					[value]="pais.alpha3Code"
+				>
+					{{pais.name}}
+				</option>
+			</select>
+		</div>
+	</div>
+	<!-- Selector de Fronteras -->
+	<div
+		class="row"
+		*ngIf="paisesFrontera.length!==0 && formAnidada.controls?.pais.value!==''"
+	>
+		<div class="col">
+			<label class="form-label"
+				>Frontera {{paisesFrontera.length}}</label
+			>
+			<select class="form-control" formControlName="frontera">
+				<option value="">
+					-- Seleccione pais fronterizo --
+				</option>
+				<option
+					*ngFor="let pais of paisesFrontera"
+					[value]="pais.alpha3Code"
+				>
+					{{pais.name}}
+				</option>
+			</select>
+		</div>
+	</div>
+</form>
+<div *ngIf="isLoading" class="row mt-3">
+	<div class="col-12 d-flex justify-content-center">
+		<div class="circleLoader circle-5"></div>
+	</div>
+</div>
+<div class="row mt-3">
+	<div class="col">
+		<button
+			class="btn btn-primary float-end"
+			type="submit"
+			[disabled]="formAnidada.invalid"
+		>
+			Seleccionar
+		</button>
+	</div>
+</div>
+
+<h3>Formulario</h3>
+<p>Formulario valid:</p>
+<pre>{{formAnidada.valid}}</pre>
+<p>Continente seleccionado</p>
+<pre>{{formAnidada.controls?.region.value  |json}}</pre>
+<p>Pais seleccionado</p>
+<pre>{{formAnidada.controls?.pais.value  |json}}</pre>
+<p>Pais Fronterizo seleccionado</p>
+<pre>{{formAnidada.controls?.frontera.value  |json}}</pre>
+
+<p>Pais Fronterizo seleccionado</p>
+<pre>{{paisesFrontera  |json}}</pre>

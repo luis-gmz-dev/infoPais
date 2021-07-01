@@ -1,64 +1,68 @@
 :root {
-	--color-red100: #e84545;
-	--color-red50: #903749;
-	--color-red30: #53354a;
-	--color-blueDemon: #2b2e4a;
+  --color-red100: #e84545;
+  --color-red50: #903749;
+  --color-red30: #53354a;
+  --color-indigo700: #3d0a91;
+  --color-blueDemon: #2b2e4a;
+  --color-indigo900: #140330;
+  --color-gray700: #495057;
+  --color-gray900: #212529;
 }
 body {
-	background-color: #f3f3f3;
+  background-color: #f3f3f3;
 }
 
 .circleLoader {
-	margin: 0px;
-	display: inline-block;
-	width: 8em;
-	height: 8em;
-	border-radius: 50%;
-	border: 6px solid var(--color-red30);
-	animation: circ-anim 0.8s linear infinite;
+  margin: 0px;
+  display: inline-block;
+  width: 8em;
+  height: 8em;
+  border-radius: 50%;
+  border: 6px solid var(--color-gray700);
+  animation: circ-anim 0.8s linear infinite;
 }
 
 .circle-5 {
-	border: 5px solid var(--color-red100);
-	position: relative;
-	border-bottom-color: transparent;
-	border-left-color: transparent;
+  border: 5px solid var(--color-gray700);
+  position: relative;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
 }
 .circle-5:after {
-	position: absolute;
-	content: '';
-	width: 80%;
-	height: 80%;
-	background: transparent;
-	top: 50%;
-	left: 50%;
-	margin-left: -40%;
-	margin-top: -40%;
-	border-radius: 50%;
-	border: 3px solid var(--color-red50);
-	box-sizing: border-box;
-	border-top-color: transparent;
-	border-right-color: transparent;
-	animation: circ-anim 0.4s reverse linear infinite;
+  position: absolute;
+  content: "";
+  width: 80%;
+  height: 80%;
+  background: transparent;
+  top: 50%;
+  left: 50%;
+  margin-left: -40%;
+  margin-top: -40%;
+  border-radius: 50%;
+  border: 3px solid var(--color-gray900);
+  box-sizing: border-box;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  animation: circ-anim 0.4s reverse linear infinite;
 }
 
 @keyframes circ-anim {
-	from {
-		transform: rotate(0);
-	}
-	to {
-		transform: rotate(360deg);
-	}
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .center {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-/* style card  */
+/* style card 
 .card-flag {
 	display: inline-block;
 	width: 300px;
@@ -93,9 +97,9 @@ body {
 	height: 100%;
 	background: radial-gradient(
 		circle at 23.5% 81.59%,
-		#91a1b1 0,
-		#496c8b 50%,
-		#003b66 100%
+		var(--color-gray700) 0,
+		var(--color-gray700) 50%,
+		var(--color-gray900) 100%
 	);
 	transition: width 0.4s;
 	overflow: hidden;
@@ -199,4 +203,4 @@ body {
 	height: 45%;
 	top: 27.5%;
 	left: 10%;
-}
+} */

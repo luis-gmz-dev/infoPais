@@ -9,20 +9,23 @@ import { PaisService } from '../../services/pais.service';
 })
 export class PorCapitalComponent implements OnInit {
 	public termino = 'Mexico City';
-	public isErrorAlert = false;
+	public isErrorAlert = true;
 	public paises: Country[] = [];
+	public paisesSugeridos: Country[] = [];
+	public activarSugerencias: boolean = false;
 	public isLoading: boolean = true;
 
-	constructor(private _servicePais: PaisService) {
+	constructor(private _servicePais: PaisService) {}
+
+	ngOnInit(): void {
 		this.buscar(this.termino);
 	}
 
-	ngOnInit(): void {}
-
 	public buscar(termino: string): void {
+		this.activarSugerencias = false;
 		this.isLoading = true;
 		this.termino = termino;
-		this.isErrorAlert = false;
+		this.isErrorAlert = true;
 		this._servicePais.buscarCapital(this.termino).subscribe(
 			(paises) => {
 				this.paises = paises;
@@ -34,11 +37,16 @@ export class PorCapitalComponent implements OnInit {
 				this.isLoading = false;
 			}
 		);
-		this.isLoading = true;
 	}
 
 	public suggestions(event) {
-		console.log('No se que envie?');
-		console.log(event);
+		this.activarSugerencias = true;
+		this.termino = event;
+		this._servicePais.buscarCapital(event).subscribe(
+			(paises) => (this.paisesSugeridos = paises.splice(0, 5)),
+			(err) => {
+				this.paisesSugeridos = [];
+			}
+		);
 	}
 }

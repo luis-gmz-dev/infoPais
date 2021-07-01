@@ -9,7 +9,7 @@ import { PaisService } from '../../services/pais.service';
 	styles: [],
 })
 export class PorRegionComponent implements OnInit {
-	regiones: string[] = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+	regiones: string[] = [];
 	regionActived: string = '';
 	paises: Country[] = [];
 	isLoading = false;
@@ -17,7 +17,9 @@ export class PorRegionComponent implements OnInit {
 
 	constructor(private _servicePais: PaisService) {}
 
-	ngOnInit(): void {}
+	ngOnInit(): void {
+		this.regiones = this._servicePais.regiones;
+	}
 
 	activarRegion(region: string) {
 		if (region === this.regionActived) {
