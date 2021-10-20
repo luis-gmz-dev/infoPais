@@ -678,7 +678,7 @@ __webpack_require__.r(__webpack_exports__);
 class PaisService {
     constructor(_http) {
         this._http = _http;
-        this.apiURL = 'https://restcountries.eu/rest/v2';
+        this.apiURL = 'https://restcountries.com/v2';
         this._regiones = [
             'Africa',
             'Americas',
@@ -691,10 +691,10 @@ class PaisService {
         return [...this._regiones];
     }
     get httpParams() {
-        return new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('fields', 'name;capital;alpha3Code;flag;population;borders;');
+        return new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('fields', 'name,capital,alpha3Code,flag,population,borders,');
     }
     get httpParamsBorders() {
-        return new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('fields', 'name;alpha3Code;borders;');
+        return new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('fields', 'name,alpha3Code,borders');
     }
     buscarPais(nombrePais) {
         const url = `${this.apiURL}/name/${nombrePais}`;
