@@ -13,7 +13,7 @@ import {
   providedIn: 'root',
 })
 export class PaisService {
-  private apiURL: string = 'https://restcountries.eu/rest/v2';
+  private apiURL: string = 'https://restcountries.com/v2';
 
   private _regiones: string[] = [
     'Africa',
@@ -30,11 +30,11 @@ export class PaisService {
   get httpParams() {
     return new HttpParams().set(
       'fields',
-      'name;capital;alpha3Code;flag;population;borders;'
+      'name,capital,alpha3Code,flag,population,borders,'
     );
   }
   get httpParamsBorders() {
-    return new HttpParams().set('fields', 'name;alpha3Code;borders;');
+    return new HttpParams().set('fields', 'name,alpha3Code,borders');
   }
 
   constructor(private _http: HttpClient) {}
