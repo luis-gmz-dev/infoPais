@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Archivos del sistema anterio\htdocs\Angular\Angular_Practicas\infoPais\src\styles.css */"OmL/");
+module.exports = __webpack_require__(/*! D:\Archivos del sistema anterio\htdocs\Angular\Angular_Practicas\infopais\src\styles.css */"OmL/");
 
 
 /***/ }),
